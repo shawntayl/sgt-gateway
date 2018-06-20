@@ -12,14 +12,14 @@ Exposes a Student Rest API, acting as a proxy to the Student SOAP backend servic
 
 **Sub modules**
 --
-* ####student-mapping 
+* student-mapping 
    Module containing the pojos used by the student rest api.
     
         Generates the JAXB source from wsdl file, and applies jsr303 annotations to sources based on xsd schema constraints,
         thus enabling validation at a bean level, using javax.validation.constraints.
         Therefore enabling the use of the JAXB sources for the REST service
     
-* ####student-service-gateway
+* student-service-gateway
    Module containing Student Rest Service
      
         Uses springfox to expose the service api definition using swagger2
@@ -27,13 +27,13 @@ Exposes a Student Rest API, acting as a proxy to the Student SOAP backend servic
         
         Usages spring @Valid [javax.validation.constraints] to validate input via Request Parameters, Path Variables and Request Body
             
-* ####student-xsd-schema
+* student-xsd-schema
    Module containing jaxb generates artifacts for backend SOAP service and client 
-* ####student-service
+* student-service
     Module containing the SOAP based Student backend service
-* ####student-service-client
+* student-service-client
     Module containing client used to call the Student backend service
-* ####student-xsd-schema
+* student-xsd-schema
     Module containing 
 
 
