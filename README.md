@@ -5,9 +5,9 @@ Exposes a Student Rest API, acting as a proxy to the Student SOAP backend servic
 
 **Challenges**
 --
-    Find a way to expose the new Rest API, in such a way as to make it easy for existing clients currently using the SOAP backend service to migrate to this service.
+    Find a way to expose the new Rest API, in such a way as to make it easy for existing clients currently using the SOAP backend service to migrate from to this service.
 
-    Allow the new REST API service to be easily adaptable, to changes made on the backend SOAP service  
+    Allow this REST API service to be easily adaptable to changes made on the backend SOAP service  
 
 
 **Sub modules**
