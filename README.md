@@ -27,9 +27,9 @@ Exposes a Student Rest API, acting as a proxy to the Student SOAP backend servic
         
         Usages spring @Valid [javax.validation.constraints] to validate input via Request Parameters, Path Variables and Request Body
             
-* student-xsd-schema
+* student-xsd-schema.
         
-        Module containing jaxb generates artifacts for backend SOAP service and client
+  Module containing jaxb generates artifacts for backend SOAP service and client
          
 * student-service
         
