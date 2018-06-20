@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://sgt.com/students" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sgt.com/students" targetNamespace="http://sgt.com/students">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://sgt.com/students">
+
+            <xs:element name="GetStudentRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="GetStudentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="studentDetails" type="tns:StudentDetailsType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="GetAllStudentsRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="year" type="xs:positiveInteger"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="GetAllStudentsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="year" type="xs:positiveInteger"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="studentDetails" type="tns:StudentDetailsType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="CreateStudentRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="year" type="xs:positiveInteger"/>
+                        <xs:element name="studentDetails" type="tns:StudentDetailsType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="CreateStudentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="year" type="xs:positiveInteger"/>
+                        <xs:element name="status" type="xs:boolean"/>
+                        <xs:element name="studentDetails" type="tns:StudentDetailsType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="UpdateStudentRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="year" type="xs:positiveInteger"/>
+                        <xs:element name="studentDetails" type="tns:StudentDetailsType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="UpdateStudentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="year" type="xs:positiveInteger"/>
+                        <xs:element name="status" type="xs:boolean"/>
+                        <xs:element name="studentDetails" type="tns:StudentDetailsType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="DeleteStudentRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="year" type="xs:positiveInteger"/>
+                        <xs:element name="studentDetails" type="tns:StudentDetailsType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="DeleteStudentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="year" type="xs:positiveInteger"/>
+                        <xs:element name="status" type="xs:string"/>
+                        <xs:element name="studentDetails" type="tns:StudentDetailsType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+
+
+            <xs:complexType name="StudentDetailsType">
+                <xs:sequence>
+                    <xs:element name="id" type="xs:int"/>
+                    <xs:element name="name" type="tns:NonEmptyStringWithoutSpace"/>
+                    <xs:element name="passportNumber" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:simpleType name="NonEmptyStringWithoutSpace">
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="\S+"/>
+                </xs:restriction>
+            </xs:simpleType>
+
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="GetStudentRequest">
+        <wsdl:part element="tns:GetStudentRequest" name="GetStudentRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CreateStudentRequest">
+        <wsdl:part element="tns:CreateStudentRequest" name="CreateStudentRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetStudentResponse">
+        <wsdl:part element="tns:GetStudentResponse" name="GetStudentResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CreateStudentResponse">
+        <wsdl:part element="tns:CreateStudentResponse" name="CreateStudentResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UpdateStudentResponse">
+        <wsdl:part element="tns:UpdateStudentResponse" name="UpdateStudentResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteStudentResponse">
+        <wsdl:part element="tns:DeleteStudentResponse" name="DeleteStudentResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetAllStudentsResponse">
+        <wsdl:part element="tns:GetAllStudentsResponse" name="GetAllStudentsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UpdateStudentRequest">
+        <wsdl:part element="tns:UpdateStudentRequest" name="UpdateStudentRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetAllStudentsRequest">
+        <wsdl:part element="tns:GetAllStudentsRequest" name="GetAllStudentsRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteStudentRequest">
+        <wsdl:part element="tns:DeleteStudentRequest" name="DeleteStudentRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="StudentPort">
+        <wsdl:operation name="GetStudent">
+            <wsdl:input message="tns:GetStudentRequest" name="GetStudentRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:GetStudentResponse" name="GetStudentResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateStudent">
+            <wsdl:input message="tns:CreateStudentRequest" name="CreateStudentRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:CreateStudentResponse" name="CreateStudentResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateStudent">
+            <wsdl:input message="tns:UpdateStudentRequest" name="UpdateStudentRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:UpdateStudentResponse" name="UpdateStudentResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteStudent">
+            <wsdl:input message="tns:DeleteStudentRequest" name="DeleteStudentRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:DeleteStudentResponse" name="DeleteStudentResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllStudents">
+            <wsdl:input message="tns:GetAllStudentsRequest" name="GetAllStudentsRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:GetAllStudentsResponse" name="GetAllStudentsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="StudentPortSoap11" type="tns:StudentPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetStudent">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="GetStudentRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetStudentResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateStudent">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="CreateStudentRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateStudentResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateStudent">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="UpdateStudentRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdateStudentResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteStudent">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="DeleteStudentRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeleteStudentResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllStudents">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="GetAllStudentsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAllStudentsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="StudentPortService">
+        <wsdl:port binding="tns:StudentPortSoap11" name="StudentPortSoap11">
+            <soap:address location="http://localhost:8001/ws"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
