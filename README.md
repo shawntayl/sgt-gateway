@@ -3,11 +3,55 @@
 Exposes a Student Rest API, acting as a proxy to the Student SOAP backend service.
 
 
+## Requirements
+
+- Implemented and tested on Java SE 8
+
+- Major Dependencies 
+-   JUnit 
+-   Mockito
+-   SpringBoot
+-   SpringFox
+-   Spring ws
+-   JAXB
+
+- Project dependencies managed by Maven
+
+Deploy and run guidelines
+-  Student SOAP backend service
+      
+     Steps:            
+      
+        1 - Copy .jar file called `student-service-1.0-SNAPSHOT.jar` located in the target folder of module `student-service`,
+            to your designated folder where you want to run this application.
+        2 - Open Windows Command prompt or Bash shell at your designated folder location
+        3 - Run the following command "java -jar student-service-1.0-SNAPSHOT.jar"  {ignoring the quotes "}
+        
+    To verify that this service is up
+            
+        Open a Web browser with this url `http://localhost:8001/ws/students.wsdl`, if it is successful, a xml wsdl definition should be returned     
+
+-  Student Rest Service
+      
+      Steps:   
+               
+        1 - Copy .jar file called `student-service-rest-1.0-SNAPSHOT.jar` located in the target folder of module `student-service-rest`,
+            to a new designated folder where you want to run this application
+        2 - Open Windows Command prompt or Bash shell at your designated folder location
+        3 - Run the following command "java -jar student-service-rest-1.0-SNAPSHOT.jar"  {ignoring the quotes "}
+
+    To verify that this service is up
+            
+        Open a another Web browser tab with this url `http://localhost:7001/sgt/gateway/swagger-ui.html`, if it is successful,
+        a swagger-ui html page should appear, with API defintion     
+
+
 **Challenges**
 --
     Find a way to expose the new Rest API, in such a way as to make it easy for existing clients currently using the SOAP backend service to migrate from to this service.
 
     Allow this REST API service to be easily adaptable to changes made on the backend SOAP service  
+
 
 
 **Sub modules**
@@ -20,12 +64,15 @@ Exposes a Student Rest API, acting as a proxy to the Student SOAP backend servic
         Therefore enabling the use of the JAXB sources for the REST service
     
 * student-service-gateway
-   Module containing Student Rest Service
+
+    * student-service-rest
+    
+            Module containing Student Rest Service
      
-        Uses springfox to expose the service api definition using swagger2
-        See [http://localhost:7001/sgt/gateway/swagger-ui.html"]
+            Uses springfox to expose the service api definition using swagger2
+            See [http://localhost:7001/sgt/gateway/swagger-ui.html"]
         
-        Usages spring @Valid [javax.validation.constraints] to validate input via Request Parameters, Path Variables and Request Body
+            Usages spring @Valid [javax.validation.constraints] to validate input via Request Parameters, Path Variables and Request Body
             
 * student-xsd-schema
         
